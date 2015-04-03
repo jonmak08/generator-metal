@@ -9,7 +9,8 @@ describe('metal:repo', function () {
     helpers.run(path.join(__dirname, '../repo'))
       .withOptions({ 'skip-install': true })
       .withPrompt({
-        repoName: 'metal-boilerplate'
+        repoName: 'my-repo',
+        repoOwner: 'my-user'
       })
       .on('end', done);
   });

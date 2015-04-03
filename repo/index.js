@@ -14,9 +14,22 @@ module.exports = yeoman.generators.Base.extend({
       type: 'input',
       name: 'repoName',
       message: 'What\'s the GitHub repository name?',
+      default: 'my-repo',
       validate: function(input) {
         if (!input) {
-          return 'You need to provide a GitHub repository name.';
+          return 'You must provide a GitHub repository name.';
+        }
+
+        return true;
+      }
+    },
+    {
+      name: 'repoOwner',
+      message: 'What\'s the GitHub username?',
+      default: 'my-user',
+      validate: function(input) {
+        if (!input) {
+          return 'You must provide a GitHub username.';
         }
 
         return true;
@@ -25,6 +38,7 @@ module.exports = yeoman.generators.Base.extend({
 
     this.prompt(prompts, function (props) {
       this.repoName = props.repoName;
+      this.repoOwner = props.repoOwner;
 
       done();
     }.bind(this));
@@ -49,7 +63,10 @@ module.exports = yeoman.generators.Base.extend({
 
     this.fs.copyTpl(this.templatePath('_package.json'),
         this.destinationPath('package.json'),
-        { repoName: this.repoName });
+        {
+          repoName: this.repoName,
+          repoOwner: this.repoOwner
+        });
 
     this.fs.copyTpl(this.templatePath('_README.md'),
         this.destinationPath('README.md'),
