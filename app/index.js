@@ -17,10 +17,10 @@ module.exports = yeoman.generators.Base.extend({
     var prompts = [{
       type: 'input',
       name: 'componentName',
-      message: 'What\'s your component name?',
+      message: 'What\'s your component class name?',
       validate: function(input) {
         if (!input) {
-          return 'You need to provide a component name.';
+          return 'You need to provide a component class name.';
         }
 
         return true;
