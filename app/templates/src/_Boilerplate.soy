@@ -1,0 +1,37 @@
+{namespace Templates.Boilerplate}
+
+/**
+ * This renders the main element. Component template parts are called from
+ * this template by invoking, e.g. `{delcall Boilerplate.header data="all" /}`.
+ * Component parts could be named by the developer.
+ */
+{template .content}
+	{delcall Boilerplate.header data="all" /}
+	{delcall Boilerplate.body data="all" /}
+	{delcall Boilerplate.footer data="all" /}
+{/template}
+
+/**
+ * This renders the header part of the component.
+ * @param headerContent
+ */
+{template .header}
+	<a class="close" data-onclick="close">Close</a>
+	{$headerContent}
+{/template}
+
+/**
+ * This renders the body part of the component.
+ * @param bodyContent
+ */
+{template .body}
+	{$bodyContent}
+{/template}
+
+/**
+ * This renders the footer part of the component.
+ * @param footerContent
+ */
+{template .footer}
+	{$footerContent}
+{/template}

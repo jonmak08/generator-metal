@@ -34,26 +34,23 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: {
-    app: function () {
-      this.fs.copy(
-        this.templatePath('_package.json'),
-        this.destinationPath('package.json')
-      );
-      this.fs.copy(
-        this.templatePath('_bower.json'),
-        this.destinationPath('bower.json')
-      );
+    source: function () {
+      this.fs.copy(this.templatePath('src/jshintrc'),
+        this.destinationPath('src/.jshintrc'));
+
+      this.fs.copy(this.templatePath('src/_Boilerplate.js'),
+        this.destinationPath('src/Boilerplate.js'));
+
+      this.fs.copy(this.templatePath('src/_Boilerplate.soy'),
+        this.destinationPath('src/Boilerplate.soy'));
     },
 
-    projectfiles: function () {
-      this.fs.copy(
-        this.templatePath('editorconfig'),
-        this.destinationPath('.editorconfig')
-      );
-      this.fs.copy(
-        this.templatePath('jshintrc'),
-        this.destinationPath('.jshintrc')
-      );
+    test: function () {
+      this.fs.copy(this.templatePath('test/jshintrc'),
+        this.destinationPath('test/.jshintrc'));
+
+      this.fs.copy(this.templatePath('test/_Boilerplate.js'),
+        this.destinationPath('test/Boilerplate.js'));
     }
   },
 

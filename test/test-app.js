@@ -18,10 +18,11 @@ describe('metal:app', function () {
 
   it('creates files', function () {
     assert.file([
-      'bower.json',
-      'package.json',
-      '.editorconfig',
-      '.jshintrc'
+      'src/.jshintrc',
+      'src/Boilerplate.js',
+      'src/Boilerplate.soy',
+      'test/.jshintrc',
+      'test/Boilerplate.js'
     ]);
   });
 });
