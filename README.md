@@ -1,47 +1,93 @@
-# generator-metal [![Build Status](https://secure.travis-ci.org/liferay/generator-metal.png?branch=master)](https://travis-ci.org/liferay/generator-metal)
+# Metal.js Generator
 
-> [Yeoman](http://yeoman.io) generator
+[![NPM version](http://img.shields.io/npm/v/generator-metal.svg?style=flat)](http://npmjs.org/generator-metal)
+[![NPM downloads](http://img.shields.io/npm/dm/generator-metal.svg?style=flat)](http://npmjs.org/generator-metal)
+[![Build Status](http://img.shields.io/travis/liferay/generator-metal/master.svg?style=flat)](https://travis-ci.org/liferay/generator-metal)
+[![Dependency Status](http://img.shields.io/david/liferay/generator-metal.svg?style=flat)](https://david-dm.org/liferay/generator-metal)
 
+> A Yeoman Generator that scaffolds a [Metal.js](https://github.com/liferay/metal) component or project.
+
+## Install
+
+First, install [Yeoman](http://yeoman.io/) from [npm](https://www.npmjs.org/):
+
+```sh
+$ [sudo] npm install -g yo
+```
+
+Then, install this generator:
+
+```sh
+$ [sudo] npm install -g generator-metal
+```
 
 ## Getting Started
 
-### What is Yeoman?
+There are two different generators available.
 
-Trick question. It's not a thing. It's this guy:
+* The first one used to scaffold out new **individual components**:
 
-![](http://i.imgur.com/JHaAlBJ.png)
+    ```sh
+$ yo metal
+    ```
 
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
+    ```
+[?] How do you want to name this component?
+[?] Which template language would you like to use?
+    ```
 
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
+    Which will generate the following file:
 
-```bash
-npm install -g yo
-```
+    ```
+.
+├── src/.jshintrc
+├── src/MyComponent.js
+├── src/MyComponent.soy
+├── test/.jshintrc
+└── test/MyComponent.js
+    ```
 
-### Yeoman Generators
+* The second one is used to scaffold an **entire project**:
 
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
+    ```sh
+$ yo metal:repo
+    ```
 
-To install generator-metal from npm, run:
+    ```
+[?] How do you want to name this component?
+[?] Which template language would you like to use?
+[?] What's the GitHub repository name?
+[?] What's the GitHub username?
+[?] How would you describe this project?
+[?] How would you like to build your component(s)?
+    ```
 
-```bash
-npm install -g generator-metal
-```
+    Which will generate the following project structure:
 
-Finally, initiate the generator:
+    ```
+.
+├── src/.jshintrc
+├── src/MyComponent.js
+├── src/MyComponent.soy
+├── test/.jshintrc
+├── test/MyComponent.js
+├── .editorconfig
+├── .gitignore
+├── bower.json
+├── package.json
+├── gulpfile.js
+├── karma.conf.js
+└── README.md
+    ```
 
-```bash
-yo metal
-```
+    And run `bower install` & `npm install` for you to fetch all dependencies.
 
-### Getting To Know Yeoman
+> _**Note**: files will be generated in the current directory, so be sure to change to a new directory before running those commands if you don't want to overwrite existing files._
 
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
+## History
 
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
-
+For detailed changelog, see [Releases](https://github.com/liferay/generator-metal/releases).
 
 ## License
 
-MIT
+[BSD License](http://opensource.org/licenses/BSD-2-Clause) © Liferay, Inc.
