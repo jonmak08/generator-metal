@@ -15,9 +15,10 @@ module.exports = yeoman.generators.Base.extend({
       type: 'input',
       name: 'componentName',
       message: 'How do you want to name this component?',
+      default: 'MyComponent',
       validate: function(input) {
         if (!input) {
-          return 'You need to provide a component name.';
+          return 'You must provide a component name.';
         }
 
         return true;

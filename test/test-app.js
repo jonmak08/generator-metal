@@ -8,7 +8,7 @@ describe('metal:app', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
       .withPrompt({
-        componentName: 'boilerplate'
+        componentName: 'MyComponent'
       })
       .on('end', done);
   });
@@ -16,10 +16,10 @@ describe('metal:app', function () {
   it('creates files', function () {
     assert.file([
       'src/.jshintrc',
-      'src/Boilerplate.js',
-      'src/Boilerplate.soy',
+      'src/MyComponent.js',
+      'src/MyComponent.soy',
       'test/.jshintrc',
-      'test/Boilerplate.js'
+      'test/MyComponent.js'
     ]);
   });
 });
