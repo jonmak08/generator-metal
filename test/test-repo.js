@@ -7,8 +7,10 @@ var helpers = require('yeoman-generator').test;
 describe('metal:repo', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../repo'))
-      .withArguments('name', '--force')
       .withOptions({ 'skip-install': true })
+      .withPrompt({
+        repoName: 'metal-boilerplate'
+      })
       .on('end', done);
   });
 

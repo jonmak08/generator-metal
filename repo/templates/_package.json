@@ -1,5 +1,5 @@
 {
-  "name": "metal-boilerplate",
+  "name": "<%= repoName %>",
   "version": "1.0.0",
   "description": "Metal.js boilerplate.",
   "main": "index.js",

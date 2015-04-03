@@ -1,4 +1,4 @@
-Metal.js Boilerplate
+<%= repoName %>
 ===============
 
 ## Setup
