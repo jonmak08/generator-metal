@@ -11,20 +11,23 @@ module.exports = yeoman.generators.Base.extend({
   prompting: function () {
     var done = this.async();
 
-    // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the remarkable ' + chalk.red('Metal') + ' generator!'
-    ));
+    this.log(yosay('Welcome to ' + chalk.green('Metal') + ' Generator!'));
 
     var prompts = [{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
+      type: 'input',
+      name: 'componentName',
+      message: 'What\'s your component name?',
+      validate: function(input) {
+        if (!input) {
+          return 'You need to provide a component name.';
+        }
+
+        return true;
+      }
     }];
 
     this.prompt(prompts, function (props) {
-      this.someOption = props.someOption;
+      this.componentName = props.componentName;
 
       done();
     }.bind(this));
