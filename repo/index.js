@@ -8,10 +8,26 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function () {
-    this.fs.copy(
-      this.templatePath('somefile.js'),
-      this.destinationPath('somefile.js')
-    );
+    this.fs.copy(this.templatePath('editorconfig'),
+      this.destinationPath('.editorconfig'));
+
+    this.fs.copy(this.templatePath('gitignore'),
+      this.destinationPath('.gitignore'));
+
+    this.fs.copyTpl(this.templatePath('_bower.json'),
+        this.destinationPath('bower.json'));
+
+    this.fs.copyTpl(this.templatePath('_gulpfile.js'),
+        this.destinationPath('gulpfile.js'));
+
+    this.fs.copyTpl(this.templatePath('_karma.conf.js'),
+        this.destinationPath('karma.conf.js'));
+
+    this.fs.copyTpl(this.templatePath('_package.json'),
+        this.destinationPath('package.json'));
+
+    this.fs.copyTpl(this.templatePath('_README.md'),
+        this.destinationPath('README.md'));
   },
 
   install: function () {
