@@ -11,7 +11,7 @@ describe('metal:app', function () {
       .inDir(path.join(os.tmpdir(), './temp-test'))
       .withOptions({ 'skip-install': true })
       .withPrompt({
-        someOption: true
+        componentName: 'boilerplate'
       })
       .on('end', done);
   });
