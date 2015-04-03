@@ -1,4 +1,5 @@
 'use strict';
+
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var path = require('path');
@@ -59,11 +60,5 @@ module.exports = yeoman.generators.Base.extend({
         path.join(this.destinationRoot(), 'test', this.capitalizeName + '.js'),
         { capitalizeName: this.capitalizeName });
     }
-  },
-
-  install: function () {
-    this.installDependencies({
-      skipInstall: this.options['skip-install']
-    });
   }
 });
