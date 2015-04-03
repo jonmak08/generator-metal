@@ -10,7 +10,8 @@ describe('metal:repo', function () {
       .withOptions({ 'skip-install': true })
       .withPrompt({
         repoName: 'my-repo',
-        repoOwner: 'my-user'
+        repoOwner: 'my-user',
+        repoDescription: 'My awesome Metal project',
       })
       .on('end', done);
   });

@@ -34,11 +34,17 @@ module.exports = yeoman.generators.Base.extend({
 
         return true;
       }
+    },
+    {
+      name: 'repoDescription',
+      message: 'How would you describe this project?',
+      default: 'My awesome Metal project'
     }];
 
     this.prompt(prompts, function (props) {
       this.repoName = props.repoName;
       this.repoOwner = props.repoOwner;
+      this.repoDescription = props.repoDescription;
 
       done();
     }.bind(this));
@@ -53,7 +59,10 @@ module.exports = yeoman.generators.Base.extend({
 
     this.fs.copyTpl(this.templatePath('_bower.json'),
         this.destinationPath('bower.json'),
-        { repoName: this.repoName });
+        {
+          repoName: this.repoName,
+          repoDescription: this.repoDescription
+        });
 
     this.fs.copyTpl(this.templatePath('_gulpfile.js'),
         this.destinationPath('gulpfile.js'));
@@ -65,7 +74,8 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('package.json'),
         {
           repoName: this.repoName,
-          repoOwner: this.repoOwner
+          repoOwner: this.repoOwner,
+          repoDescription: this.repoDescription,
         });
 
     this.fs.copyTpl(this.templatePath('_README.md'),

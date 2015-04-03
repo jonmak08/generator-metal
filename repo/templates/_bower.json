@@ -1,6 +1,11 @@
 {
   "name": "<%= repoName %>",
   "version": "0.0.0",
+  "description": "<%= repoDescription %>",
+  "keywords": [
+    "metal",
+    "metaljs"
+  ],
   "ignore": [
     "**/.*",
     "node_modules",
