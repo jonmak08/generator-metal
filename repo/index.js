@@ -74,6 +74,36 @@ module.exports = yeoman.generators.Base.extend({
 
   writing: function () {
     this.fs.copy(
+      this.templatePath('src/jshintrc'),
+      this.destinationPath('src/.jshintrc')
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('src/_Boilerplate.js'),
+      path.join(this.destinationRoot(), 'src', this.capitalizeName + '.js'),
+      { capitalizeName: this.capitalizeName,
+        lowercaseName: this.lowercaseName
+      }
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('src/_Boilerplate.soy'),
+      path.join(this.destinationRoot(), 'src', this.capitalizeName + '.soy'),
+      { capitalizeName: this.capitalizeName }
+    );
+
+    this.fs.copy(
+      this.templatePath('test/jshintrc'),
+      this.destinationPath('test/.jshintrc')
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('test/_Boilerplate.js'),
+      path.join(this.destinationRoot(), 'test', this.capitalizeName + '.js'),
+      { capitalizeName: this.capitalizeName }
+    );
+
+    this.fs.copy(
       this.templatePath('editorconfig'),
       this.destinationPath('.editorconfig')
     );

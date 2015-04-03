@@ -19,6 +19,11 @@ describe('metal:repo', function () {
 
   it('creates files', function () {
     assert.file([
+      'src/.jshintrc',
+      'src/MyComponent.js',
+      'src/MyComponent.soy',
+      'test/.jshintrc',
+      'test/MyComponent.js',
       '.editorconfig',
       '.gitignore',
       'bower.json',
