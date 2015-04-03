@@ -28,6 +28,13 @@ module.exports = yeoman.generators.Base.extend({
       }
     },
     {
+      type: 'list',
+      name: 'templateLang',
+      message: 'Which template language would you like to use?',
+      choices: ['Soy', 'Handlebars', 'Jade'],
+      default: 0
+    },
+    {
       type: 'input',
       name: 'repoName',
       message: 'What\'s the GitHub repository name?',
@@ -61,18 +68,29 @@ module.exports = yeoman.generators.Base.extend({
     }];
 
     this.prompt(prompts, function (props) {
+      this.capitalizeName = this._.capitalize(props.componentName);
+      this.lowercaseName = props.componentName.toLowerCase();
+
+      this.templateLang = props.templateLang;
       this.repoName = props.repoName;
       this.repoOwner = props.repoOwner;
       this.repoDescription = props.repoDescription;
-
-      this.capitalizeName = this._.capitalize(props.componentName);
-      this.lowercaseName = props.componentName.toLowerCase();
 
       done();
     }.bind(this));
   },
 
   writing: function () {
+    var templateExt = '';
+
+    if (this.templateLang === 'Soy') {
+      templateExt = '.soy';
+    } else if (this.templateLang === 'Handlebars') {
+      templateExt = '.handlebars';
+    } else if (this.templateLang === 'Jade') {
+      templateExt = '.jade';
+    }
+
     this.fs.copy(
       this.templatePath('src/jshintrc'),
       this.destinationPath('src/.jshintrc')
@@ -87,8 +105,8 @@ module.exports = yeoman.generators.Base.extend({
     );
 
     this.fs.copyTpl(
-      this.templatePath('src/_Boilerplate.soy'),
-      path.join(this.destinationRoot(), 'src', this.capitalizeName + '.soy'),
+      this.templatePath('src/_Boilerplate' + templateExt),
+      path.join(this.destinationRoot(), 'src', this.capitalizeName + templateExt),
       { capitalizeName: this.capitalizeName }
     );
 

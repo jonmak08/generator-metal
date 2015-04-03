@@ -10,6 +10,7 @@ describe('metal:repo', function () {
       .withOptions({ 'skip-install': true })
       .withPrompt({
         componentName: 'MyComponent',
+        templateLang: 'Handlebars',
         repoName: 'my-repo',
         repoOwner: 'my-user',
         repoDescription: 'My awesome Metal project'
@@ -21,7 +22,7 @@ describe('metal:repo', function () {
     assert.file([
       'src/.jshintrc',
       'src/MyComponent.js',
-      'src/MyComponent.soy',
+      'src/MyComponent.handlebars',
       'test/.jshintrc',
       'test/MyComponent.js',
       '.editorconfig',
