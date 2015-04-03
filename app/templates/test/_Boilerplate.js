@@ -1,16 +1,16 @@
 import async from '../bower_components/metaljs/src/async/async';
 import dom from '../bower_components/metaljs/src/dom/dom';
-import Boilerplate from '../src/Boilerplate';
+import <%= capitalizeName %> from '../src/<%= capitalizeName %>';
 
-describe('Boilerplate', function() {
+describe('<%= capitalizeName %>', function() {
 	it('should render component', function() {
-		var component = new Boilerplate().render();
+		var component = new <%= capitalizeName %>().render();
 		assert.ok(component.element.parentNode);
 		component.dispose();
 	});
 
 	it('should change visibility when visible attribute changes', function(done) {
-		var component = new Boilerplate().render();
+		var component = new <%= capitalizeName %>().render();
 		component.visible = false;
 		async.nextTick(function() {
 			assert.ok(!component.visible);
@@ -20,7 +20,7 @@ describe('Boilerplate', function() {
 	});
 
 	it('should change visibility when close icon is clicked', function(done) {
-		var component = new Boilerplate().render();
+		var component = new <%= capitalizeName %>().render();
 		dom.triggerEvent(component.element.querySelector('.close'), 'click');
 		async.nextTick(function() {
 			assert.ok(!component.visible);
@@ -38,11 +38,11 @@ describe('Boilerplate', function() {
 			footerContent: 'footer'
 		};
 
-		var templateFn = soy.$$getDelegateFn('Boilerplate');
+		var templateFn = soy.$$getDelegateFn('<%= capitalizeName %>');
 		var markupFromTemplate = templateFn(attributes, null, { renderChildComponents: true });
 		dom.append(document.body, markupFromTemplate.content);
 
-		var component = new Boilerplate(attributes).decorate();
+		var component = new <%= capitalizeName %>(attributes).decorate();
 
 		assert.strictEqual(
 			component.element.outerHTML,

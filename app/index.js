@@ -1,6 +1,7 @@
 'use strict';
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
+var path = require('path');
 var yosay = require('yosay');
 
 module.exports = yeoman.generators.Base.extend({
@@ -27,7 +28,8 @@ module.exports = yeoman.generators.Base.extend({
     }];
 
     this.prompt(prompts, function (props) {
-      this.componentName = props.componentName;
+      this.capitalizeName = this._.capitalize(props.componentName);
+      this.lowercaseName = props.componentName.toLowerCase();
 
       done();
     }.bind(this));
@@ -38,19 +40,24 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copy(this.templatePath('src/jshintrc'),
         this.destinationPath('src/.jshintrc'));
 
-      this.fs.copy(this.templatePath('src/_Boilerplate.js'),
-        this.destinationPath('src/Boilerplate.js'));
+      this.fs.copyTpl(this.templatePath('src/_Boilerplate.js'),
+        path.join(this.destinationRoot(), 'src', this.capitalizeName + '.js'),
+        { capitalizeName: this.capitalizeName,
+          lowercaseName: this.lowercaseName
+        });
 
-      this.fs.copy(this.templatePath('src/_Boilerplate.soy'),
-        this.destinationPath('src/Boilerplate.soy'));
+      this.fs.copyTpl(this.templatePath('src/_Boilerplate.soy'),
+        path.join(this.destinationRoot(), 'src', this.capitalizeName + '.soy'),
+        { capitalizeName: this.capitalizeName });
     },
 
     test: function () {
       this.fs.copy(this.templatePath('test/jshintrc'),
         this.destinationPath('test/.jshintrc'));
 
-      this.fs.copy(this.templatePath('test/_Boilerplate.js'),
-        this.destinationPath('test/Boilerplate.js'));
+      this.fs.copyTpl(this.templatePath('test/_Boilerplate.js'),
+        path.join(this.destinationRoot(), 'test', this.capitalizeName + '.js'),
+        { capitalizeName: this.capitalizeName });
     }
   },
 

@@ -1,12 +1,12 @@
 import core from '../bower_components/metaljs/src/core';
 import SoyComponent from '../bower_components/metaljs/src/soy/SoyComponent';
 import ComponentRegistry from '../bower_components/metaljs/src/component/ComponentRegistry';
-import './Boilerplate.soy.js';
+import './<%= capitalizeName %>.soy.js';
 
 /**
- * Boilerplate component.
+ * <%= capitalizeName %> component.
  */
-class Boilerplate extends SoyComponent {
+class <%= capitalizeName %> extends SoyComponent {
 	/**
 	 * @inheritDoc
 	 */
@@ -49,7 +49,7 @@ class Boilerplate extends SoyComponent {
 	}
 }
 
-Boilerplate.ATTRS = {
+<%= capitalizeName %>.ATTRS = {
 	/**
 	 * Attribute that holds the body content.
 	 * @type {string}
@@ -97,12 +97,12 @@ Boilerplate.ATTRS = {
  * @type {String}
  * @static
  */
-Boilerplate.ELEMENT_CLASSES = 'boilerplate';
+<%= capitalizeName %>.ELEMENT_CLASSES = '<%= lowercaseName %>';
 
 /**
  * Registers component by name. Relevant to link component with Soy template
  * name.
  */
-ComponentRegistry.register('Boilerplate', Boilerplate);
+ComponentRegistry.register('<%= capitalizeName %>', <%= capitalizeName %>);
 
-export default Boilerplate;
+export default <%= capitalizeName %>;

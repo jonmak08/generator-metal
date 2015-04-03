@@ -1,14 +1,14 @@
-{namespace Templates.Boilerplate}
+{namespace Templates.<%= capitalizeName %>}
 
 /**
  * This renders the main element. Component template parts are called from
- * this template by invoking, e.g. `{delcall Boilerplate.header data="all" /}`.
+ * this template by invoking, e.g. `{delcall <%= capitalizeName %>.header data="all" /}`.
  * Component parts could be named by the developer.
  */
 {template .content}
-	{delcall Boilerplate.header data="all" /}
-	{delcall Boilerplate.body data="all" /}
-	{delcall Boilerplate.footer data="all" /}
+	{delcall <%= capitalizeName %>.header data="all" /}
+	{delcall <%= capitalizeName %>.body data="all" /}
+	{delcall <%= capitalizeName %>.footer data="all" /}
 {/template}
 
 /**
