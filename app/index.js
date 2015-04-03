@@ -1,15 +1,18 @@
 'use strict';
 
-var yeoman = require('yeoman-generator');
 var chalk  = require('chalk');
 var path   = require('path');
+var yeoman = require('yeoman-generator');
 var yosay  = require('yosay');
 
 module.exports = yeoman.generators.Base.extend({
   initializing: function () {
-    var done = this.async();
-
     this.log(yosay('Welcome, let\'s generate a ' + chalk.green('Metal') + ' component!'));
+    this.sourceRoot(path.join(__dirname, '../templates'));
+  },
+
+  prompting: function () {
+    var done = this.async();
 
     var prompts = [{
       type: 'input',
@@ -34,24 +37,34 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function() {
-    this.fs.copy(this.templatePath('src/jshintrc'),
-      this.destinationPath('src/.jshintrc'));
+    this.fs.copy(
+      this.templatePath('src/jshintrc'),
+      this.destinationPath('src/.jshintrc')
+    );
 
-    this.fs.copyTpl(this.templatePath('src/_Boilerplate.js'),
+    this.fs.copyTpl(
+      this.templatePath('src/_Boilerplate.js'),
       path.join(this.destinationRoot(), 'src', this.capitalizeName + '.js'),
       { capitalizeName: this.capitalizeName,
         lowercaseName: this.lowercaseName
-      });
+      }
+    );
 
-    this.fs.copyTpl(this.templatePath('src/_Boilerplate.soy'),
+    this.fs.copyTpl(
+      this.templatePath('src/_Boilerplate.soy'),
       path.join(this.destinationRoot(), 'src', this.capitalizeName + '.soy'),
-      { capitalizeName: this.capitalizeName });
+      { capitalizeName: this.capitalizeName }
+    );
 
-    this.fs.copy(this.templatePath('test/jshintrc'),
-      this.destinationPath('test/.jshintrc'));
+    this.fs.copy(
+      this.templatePath('test/jshintrc'),
+      this.destinationPath('test/.jshintrc')
+    );
 
-    this.fs.copyTpl(this.templatePath('test/_Boilerplate.js'),
+    this.fs.copyTpl(
+      this.templatePath('test/_Boilerplate.js'),
       path.join(this.destinationRoot(), 'test', this.capitalizeName + '.js'),
-      { capitalizeName: this.capitalizeName });
+      { capitalizeName: this.capitalizeName }
+    );
   }
 });

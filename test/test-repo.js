@@ -9,9 +9,10 @@ describe('metal:repo', function () {
     helpers.run(path.join(__dirname, '../repo'))
       .withOptions({ 'skip-install': true })
       .withPrompt({
+        componentName: 'MyComponent',
         repoName: 'my-repo',
         repoOwner: 'my-user',
-        repoDescription: 'My awesome Metal project',
+        repoDescription: 'My awesome Metal project'
       })
       .on('end', done);
   });
