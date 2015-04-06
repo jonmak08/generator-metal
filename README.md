@@ -82,6 +82,26 @@ yo metal:repo
 
 > _**Note**: files will be generated in the current directory, so be sure to change to a new directory before running those commands if you don't want to overwrite existing files._
 
+## Development
+
+Install [Gulp](http://gulpjs.com/):
+
+```sh
+[sudo] npm install -g gulp
+```
+
+Fetch local dependencies:
+
+```sh
+npm install
+```
+
+Watch ES6 compilation:
+
+```sh
+gulp
+```
+
 ## History
 
 For detailed changelog, see [Releases](https://github.com/liferay/generator-metal/releases).
