@@ -167,7 +167,7 @@ module.exports = yeoman.generators.Base.extend({
     this.installDependencies({
       skipInstall: this.options['skip-install'],
       callback: function () {
-        self.spawnCommand('gulp', ['build:globals']);
+        self.spawnCommand('gulp', ['build']);
       }
     });
   }
