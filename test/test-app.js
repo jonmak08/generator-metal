@@ -8,8 +8,7 @@ describe('metal:app', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
       .withPrompts({
-        componentName: 'MyComponent',
-        templateLang: 'Jade'
+        componentName: 'MyComponent'
       })
       .on('end', done);
   });
@@ -18,7 +17,7 @@ describe('metal:app', function () {
     assert.file([
       'src/.jshintrc',
       'src/MyComponent.js',
-      'src/MyComponent.jade',
+      'src/MyComponent.soy',
       'test/.jshintrc',
       'test/MyComponent.js'
     ]);
