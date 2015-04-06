@@ -7,65 +7,65 @@ var yeoman = require('yeoman-generator');
 var yosay  = require('yosay');
 
 module.exports = yeoman.generators.Base.extend({
-  initializing: function () {
-    this.log(yosay('Welcome, let\'s generate a ' + chalk.green('Metal') + ' component!'));
-    this.sourceRoot(path.join(__dirname, '../templates'));
-  },
+	initializing: function () {
+		this.log(yosay('Welcome, let\'s generate a ' + chalk.green('Metal') + ' component!'));
+		this.sourceRoot(path.join(__dirname, '../templates'));
+	},
 
-  prompting: function () {
-    var done = this.async();
+	prompting: function () {
+		var done = this.async();
 
-    var prompts = [{
-      type: 'input',
-      name: 'componentName',
-      message: 'How do you want to name this component?',
-      default: 'MyComponent',
-      validate: function(input) {
-        if (!input) {
-          return 'You must provide a component name.';
-        }
+		var prompts = [{
+			type: 'input',
+			name: 'componentName',
+			message: 'How do you want to name this component?',
+			default: 'MyComponent',
+			validate: function(input) {
+				if (!input) {
+					return 'You must provide a component name.';
+				}
 
-        return true;
-      }
-    }];
+				return true;
+			}
+		}];
 
-    this.prompt(prompts, function (props) {
-      this.capitalizeName = _.capitalize(props.componentName);
-      this.lowercaseName = props.componentName.toLowerCase();
+		this.prompt(prompts, function (props) {
+			this.capitalizeName = _.capitalize(props.componentName);
+			this.lowercaseName = props.componentName.toLowerCase();
 
-      done();
-    }.bind(this));
-  },
+			done();
+		}.bind(this));
+	},
 
-  writing: function() {
-    this.fs.copy(
-      this.templatePath('src/jshintrc'),
-      this.destinationPath('src/.jshintrc')
-    );
+	writing: function() {
+		this.fs.copy(
+			this.templatePath('src/jshintrc'),
+			this.destinationPath('src/.jshintrc')
+		);
 
-    this.fs.copyTpl(
-      this.templatePath('src/_Boilerplate.js'),
-      path.join(this.destinationRoot(), 'src', this.capitalizeName + '.js'),
-      { capitalizeName: this.capitalizeName,
-        lowercaseName: this.lowercaseName
-      }
-    );
+		this.fs.copyTpl(
+			this.templatePath('src/_Boilerplate.js'),
+			path.join(this.destinationRoot(), 'src', this.capitalizeName + '.js'),
+			{ capitalizeName: this.capitalizeName,
+				lowercaseName: this.lowercaseName
+			}
+		);
 
-    this.fs.copyTpl(
-      this.templatePath('src/_Boilerplate.soy'),
-      path.join(this.destinationRoot(), 'src', this.capitalizeName + '.soy'),
-      { capitalizeName: this.capitalizeName }
-    );
+		this.fs.copyTpl(
+			this.templatePath('src/_Boilerplate.soy'),
+			path.join(this.destinationRoot(), 'src', this.capitalizeName + '.soy'),
+			{ capitalizeName: this.capitalizeName }
+		);
 
-    this.fs.copy(
-      this.templatePath('test/jshintrc'),
-      this.destinationPath('test/.jshintrc')
-    );
+		this.fs.copy(
+			this.templatePath('test/jshintrc'),
+			this.destinationPath('test/.jshintrc')
+		);
 
-    this.fs.copyTpl(
-      this.templatePath('test/_Boilerplate.js'),
-      path.join(this.destinationRoot(), 'test', this.capitalizeName + '.js'),
-      { capitalizeName: this.capitalizeName }
-    );
-  }
+		this.fs.copyTpl(
+			this.templatePath('test/_Boilerplate.js'),
+			path.join(this.destinationRoot(), 'test', this.capitalizeName + '.js'),
+			{ capitalizeName: this.capitalizeName }
+		);
+	}
 });
