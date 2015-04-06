@@ -15,22 +15,35 @@ class <%= capitalizeName %> extends SoyComponent {
 	}
 
 	/**
-	 * @inheritDoc
+	 * Lifecycle. Creation phase of the component happens once after the
+	 * component is instantiated, therefore its the initial phase of the
+	 * component Lifecycle. Be conscious about actions performed in this phase
+	 * to not compromise instantiation time with operations that can be
+	 * postponed to further phases. It's recommended to bind component custom
+	 * events in this phase, in contrast to DOM events that must be bind on
+	 * attach phase.
 	 */
-	attached() {
-		// Component is in document.
+	created() {
 	}
 
 	/**
-	 * @inheritDoc
+	 * Lifecycle. When attached, the component element is appended to the DOM
+	 * and any other action to be performed must be implemented in this method,
+	 * such as, binding DOM events. A component can be re-attached multiple
+	 * times, therefore the undo behavior for any action performed in this phase
+	 * must be implemented on the detach phase.
 	 */
-	detached() {
-		// Component is not in document.
+	attached() {
 	}
 
-	disposeInternal() {
-		// Component is disposed.
-		super.disposeInternal();
+	/**
+	 * Lifecycle. When detached, the component element is removed from the DOM
+	 * and any other action to be performed must be implemented in this method,
+	 * such as, unbinding DOM events. A component can be detached multiple
+	 * times, therefore the undo behavior for any action performed in this phase
+	 * must be implemented on the attach phase.
+	 */
+	detached() {
 	}
 
 	/**
@@ -100,8 +113,8 @@ class <%= capitalizeName %> extends SoyComponent {
 <%= capitalizeName %>.ELEMENT_CLASSES = '<%= lowercaseName %>';
 
 /**
- * Registers component by name. Relevant to link component with Soy template
- * name.
+ * Registers component by name. Relevant to expose component constructor to be
+ * able to be invoked from inside other templates.
  */
 ComponentRegistry.register('<%= capitalizeName %>', <%= capitalizeName %>);
 
