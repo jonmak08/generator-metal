@@ -14,11 +14,12 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "prepublish": "gulp compile-app && gulp compile-repo"
   },
   "files": [
-    "app",
-    "repo",
+    "app/*.js",
+    "repo/*.js",
     "templates"
   ],
   "keywords": [
