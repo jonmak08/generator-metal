@@ -22,6 +22,8 @@
     "templates"
   ],
   "keywords": [
+    "metal",
+    "metaljs",
     "yeoman-generator"
   ],
   "dependencies": {

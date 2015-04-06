@@ -1,9 +1,9 @@
 # Metal.js Generator
 
-[![NPM version](http://img.shields.io/npm/v/generator-metal.svg?style=flat)](http://npmjs.org/generator-metal)
-[![NPM downloads](http://img.shields.io/npm/dm/generator-metal.svg?style=flat)](http://npmjs.org/generator-metal)
 [![Build Status](http://img.shields.io/travis/liferay/generator-metal/master.svg?style=flat)](https://travis-ci.org/liferay/generator-metal)
 [![Dependency Status](http://img.shields.io/david/liferay/generator-metal.svg?style=flat)](https://david-dm.org/liferay/generator-metal)
+[![NPM version](http://img.shields.io/npm/v/generator-metal.svg?style=flat)](http://npmjs.org/generator-metal)
+[![NPM downloads](http://img.shields.io/npm/dm/generator-metal.svg?style=flat)](http://npmjs.org/generator-metal)
 
 > A Yeoman Generator that scaffolds a [Metal.js](https://github.com/liferay/metal) component or project.
 
@@ -12,13 +12,13 @@
 First, install [Yeoman](http://yeoman.io/) from [npm](https://www.npmjs.org/):
 
 ```sh
-$ [sudo] npm install -g yo
+[sudo] npm install -g yo
 ```
 
 Then, install this generator:
 
 ```sh
-$ [sudo] npm install -g generator-metal
+[sudo] npm install -g generator-metal
 ```
 
 ## Getting Started
@@ -28,7 +28,7 @@ There are two different generators available.
 * The first one used to scaffold out new **individual components**:
 
     ```sh
-$ yo metal
+yo metal
     ```
 
     ```
@@ -50,7 +50,7 @@ $ yo metal
 * The second one is used to scaffold an **entire project**:
 
     ```sh
-$ yo metal:repo
+yo metal:repo
     ```
 
     ```
