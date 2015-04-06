@@ -18,7 +18,8 @@
   },
   "files": [
     "app",
-    "repo"
+    "repo",
+    "templates"
   ],
   "keywords": [
     "yeoman-generator"
