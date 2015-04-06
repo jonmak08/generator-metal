@@ -3,16 +3,16 @@
 var _      = require('lodash');
 var chalk  = require('chalk');
 var path   = require('path');
-var yeoman = require('yeoman-generator');
 var yosay  = require('yosay');
+var Base   = require('yeoman-generator').generators.Base;
 
-module.exports = yeoman.generators.Base.extend({
-	initializing: function () {
-		this.log(yosay('Welcome, let\'s generate a ' + chalk.green('Metal') + ' project!'));
+class RepoGenerator extends Base {
+	initializing() {
+		this.log(yosay(`Welcome, let's generate a ${chalk.green('Metal')} project!`));
 		this.sourceRoot(path.join(__dirname, '../templates'));
-	},
+	}
 
-	prompting: function () {
+	prompting() {
 		var done = this.async();
 
 		var prompts = [{
@@ -71,9 +71,9 @@ module.exports = yeoman.generators.Base.extend({
 
 			done();
 		}.bind(this));
-	},
+	}
 
-	writing: function () {
+	writing() {
 		this.fs.copyTpl(
 			this.templatePath('examples/_index.html'),
 			this.destinationPath('examples/index.html'),
@@ -159,18 +159,20 @@ module.exports = yeoman.generators.Base.extend({
 			this.destinationPath('README.md'),
 			{ repoName: this.repoName }
 		);
-	},
+	}
 
-	install: function () {
+	install() {
 		var self = this;
 
 		if (!this.options['skip-install']) {
 			this.installDependencies({
 				skipInstall: true,
-				callback: function () {
+				callback: function() {
 					self.spawnCommand('gulp', ['build']);
 				}
 			});
 		}
 	}
-});
+}
+
+module.exports = RepoGenerator;

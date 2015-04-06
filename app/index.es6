@@ -3,16 +3,16 @@
 var _      = require('lodash');
 var chalk  = require('chalk');
 var path   = require('path');
-var yeoman = require('yeoman-generator');
 var yosay  = require('yosay');
+var Base   = require('yeoman-generator').generators.Base;
 
-module.exports = yeoman.generators.Base.extend({
-	initializing: function () {
-		this.log(yosay('Welcome, let\'s generate a ' + chalk.green('Metal') + ' component!'));
+class ComponentGenerator extends Base {
+	initializing() {
+		this.log(yosay(`Welcome, let's generate a ${chalk.green('Metal')} component!`));
 		this.sourceRoot(path.join(__dirname, '../templates'));
-	},
+	}
 
-	prompting: function () {
+	prompting() {
 		var done = this.async();
 
 		var prompts = [{
@@ -35,9 +35,9 @@ module.exports = yeoman.generators.Base.extend({
 
 			done();
 		}.bind(this));
-	},
+	}
 
-	writing: function() {
+	writing() {
 		this.fs.copy(
 			this.templatePath('src/jshintrc'),
 			this.destinationPath('src/.jshintrc')
@@ -68,4 +68,6 @@ module.exports = yeoman.generators.Base.extend({
 			{ capitalizeName: this.capitalizeName }
 		);
 	}
-});
+}
+
+module.exports = ComponentGenerator;

@@ -33,6 +33,9 @@
     "yosay": "^1.0.2"
   },
   "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-babel": "^5.0.0",
+    "gulp-rename": "^1.2.2",
     "mocha": "*"
   }
 }
