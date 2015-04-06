@@ -59,13 +59,6 @@ module.exports = yeoman.generators.Base.extend({
       name: 'repoDescription',
       message: 'How would you describe this project?',
       default: 'My awesome Metal project'
-    },
-    {
-      type: 'checkbox',
-      name: 'buildType',
-      message: 'How would you like to build your component(s)?',
-      choices: ['AMD', 'CommonJS', 'Globals'],
-      default: ['Globals']
     }];
 
     this.prompt(prompts, function (props) {
@@ -75,7 +68,6 @@ module.exports = yeoman.generators.Base.extend({
       this.repoName = props.repoName;
       this.repoOwner = props.repoOwner;
       this.repoDescription = props.repoDescription;
-      this.buildType = props.buildType.toString().toLowerCase();
 
       done();
     }.bind(this));
@@ -155,10 +147,7 @@ module.exports = yeoman.generators.Base.extend({
     this.fs.copyTpl(
       this.templatePath('_README.md'),
       this.destinationPath('README.md'),
-      {
-        repoName: this.repoName,
-        buildType: this.buildType
-      }
+      { repoName: this.repoName }
     );
   },
 

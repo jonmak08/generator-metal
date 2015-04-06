@@ -14,11 +14,11 @@ bower install
 ## Build
 
 ```
-gulp build:<%= buildType %>
+gulp build:globals
 ```
 
 ```
-gulp watch:<%= buildType %>
+gulp watch:globals
 ```
 
 ## Test
