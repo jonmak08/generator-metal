@@ -78,7 +78,7 @@ yo metal:repo
 └── README.md
     ```
 
-    After generating all these files, it will run `bower install` & `npm install` for you to fetch all dependencies.
+    After that, it will run `bower install` & `npm install` to fetch all dependencies. Then, it will run `gulp build` which generates a `build` folder for you.
 
 > _**Note**: files will be generated in the current directory, so be sure to change to a new directory before running those commands if you don't want to overwrite existing files._
 
