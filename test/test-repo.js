@@ -8,7 +8,7 @@ describe('metal:repo', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../repo'))
       .withOptions({ 'skip-install': true })
-      .withPrompt({
+      .withPrompts({
         componentName: 'MyComponent',
         templateLang: 'Handlebars',
         repoName: 'my-repo',

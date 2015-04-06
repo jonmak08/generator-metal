@@ -7,7 +7,7 @@ var helpers = require('yeoman-generator').test;
 describe('metal:app', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
-      .withPrompt({
+      .withPrompts({
         componentName: 'MyComponent',
         templateLang: 'Jade'
       })
