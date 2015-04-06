@@ -1,5 +1,6 @@
 'use strict';
 
+var _      = require('lodash');
 var chalk  = require('chalk');
 var path   = require('path');
 var yeoman = require('yeoman-generator');
@@ -36,7 +37,7 @@ module.exports = yeoman.generators.Base.extend({
     }];
 
     this.prompt(prompts, function (props) {
-      this.capitalizeName = this._.capitalize(props.componentName);
+      this.capitalizeName = _.capitalize(props.componentName);
       this.lowercaseName = props.componentName.toLowerCase();
 
       this.templateLang = props.templateLang;
