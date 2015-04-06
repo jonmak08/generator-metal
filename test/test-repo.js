@@ -19,6 +19,7 @@ describe('metal:repo', function () {
 
   it('creates files', function () {
     assert.file([
+      'examples/index.html',
       'src/.jshintrc',
       'src/MyComponent.js',
       'src/MyComponent.soy',

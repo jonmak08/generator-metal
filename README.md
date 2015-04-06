@@ -33,7 +33,6 @@ yo metal
 
     ```
 [?] How do you want to name this component?
-[?] Which template language would you like to use?
     ```
 
     Which will generate the following file:
@@ -55,17 +54,16 @@ yo metal:repo
 
     ```
 [?] How do you want to name this component?
-[?] Which template language would you like to use?
 [?] What's the GitHub repository name?
 [?] What's the GitHub username?
 [?] How would you describe this project?
-[?] How would you like to build your component(s)?
     ```
 
     Which will generate the following project structure:
 
     ```
 .
+├── examples/index.html
 ├── src/.jshintrc
 ├── src/MyComponent.js
 ├── src/MyComponent.soy
@@ -80,7 +78,7 @@ yo metal:repo
 └── README.md
     ```
 
-    And run `bower install` & `npm install` for you to fetch all dependencies.
+    After generating all these files, it will run `bower install` & `npm install` for you to fetch all dependencies.
 
 > _**Note**: files will be generated in the current directory, so be sure to change to a new directory before running those commands if you don't want to overwrite existing files._
 

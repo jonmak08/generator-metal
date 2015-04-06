@@ -74,6 +74,15 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function () {
+    this.fs.copyTpl(
+      this.templatePath('examples/_index.html'),
+      this.destinationPath('examples/index.html'),
+      {
+        capitalizeName: this.capitalizeName,
+        lowercaseName: this.lowercaseName
+      }
+    );
+
     this.fs.copy(
       this.templatePath('src/jshintrc'),
       this.destinationPath('src/.jshintrc')
@@ -82,7 +91,8 @@ module.exports = yeoman.generators.Base.extend({
     this.fs.copyTpl(
       this.templatePath('src/_Boilerplate.js'),
       path.join(this.destinationRoot(), 'src', this.capitalizeName + '.js'),
-      { capitalizeName: this.capitalizeName,
+      {
+        capitalizeName: this.capitalizeName,
         lowercaseName: this.lowercaseName
       }
     );
