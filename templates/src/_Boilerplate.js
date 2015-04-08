@@ -1,6 +1,6 @@
-import core from '../bower_components/metaljs/src/core';
-import SoyComponent from '../bower_components/metaljs/src/soy/SoyComponent';
-import ComponentRegistry from '../bower_components/metaljs/src/component/ComponentRegistry';
+import core from 'metaljs/src/core';
+import SoyComponent from 'metaljs/src/soy/SoyComponent';
+import ComponentRegistry from 'metaljs/src/component/ComponentRegistry';
 import './<%= capitalizeName %>.soy.js';
 
 /**

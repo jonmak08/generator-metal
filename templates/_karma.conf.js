@@ -1,12 +1,14 @@
 var isparta = require('isparta');
 var istanbul = require('browserify-istanbul');
+var metaljs = require('metaljs');
+var renamer = require('browserify-imports-renamer');
 
 module.exports = function (config) {
 	config.set({
 		frameworks: ['mocha', 'chai', 'browserify'],
 
 		files: [
-			'node_modules/metaljs/node_modules/closure-templates/soyutils.js',
+			'node_modules/closure-templates/soyutils.js',
 			'src/**/*.js',
 			'test/**/*.js'
 		],
@@ -17,7 +19,7 @@ module.exports = function (config) {
 		},
 
 		browserify: {
-			transform: [istanbul({
+			transform: [renamer({renameFn: metaljs.renameAlias}), istanbul({
 				defaultIgnore: false,
 				instrumenter: isparta
 			})],

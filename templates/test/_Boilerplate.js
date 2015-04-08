@@ -1,5 +1,5 @@
-import async from '../bower_components/metaljs/src/async/async';
-import dom from '../bower_components/metaljs/src/dom/dom';
+import async from 'metaljs/src/async/async';
+import dom from 'metaljs/src/dom/dom';
 import <%= capitalizeName %> from '../src/<%= capitalizeName %>';
 
 describe('<%= capitalizeName %>', function() {
